@@ -70,12 +70,12 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         itemAdapter.setContext(this);
         itemAdapter.setClickListener(this);
         itemAdapter.setParallaxHeader(sliderView, recyclerView);
-        itemAdapter.setData(getData());
+//        itemAdapter.setData(getData());
         itemAdapter.implementMethods();
 
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        
+
         tv_question = (TextView)sliderView.findViewById(R.id.tv_question);
 
         btn_yes = (Button)sliderView.findViewById(R.id.btn_yes);

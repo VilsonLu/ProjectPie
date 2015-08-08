@@ -4,7 +4,10 @@
     tools:context="com.example.vilso.projectpie.FragmentMyConnections"
     android:layout_marginTop="?attr/actionBarSize">
 
-
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

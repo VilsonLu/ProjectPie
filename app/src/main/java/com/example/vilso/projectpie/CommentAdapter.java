@@ -34,6 +34,7 @@ public class CommentAdapter extends ParallaxRecyclerAdapter<RateAndComment> {
 
     public void setContext(Context context){
         this.context = context;
+        inflater = LayoutInflater.from(context);
     }
 
     public void implementMethods(){
