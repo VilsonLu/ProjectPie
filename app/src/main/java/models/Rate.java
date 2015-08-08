@@ -7,6 +7,7 @@ public class Rate {
 
     private String question;
     private int score;
+    private String comment;
 
     public String getQuestion() {
         return question;
