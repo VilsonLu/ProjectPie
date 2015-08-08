@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ParseUser user = ParseUser.getCurrentUser();
         if(user != null) {
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            Intent i = new Intent(getApplicationContext(), TestActivity.class);
             startActivity(i);
         }
 
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });

@@ -32,6 +32,10 @@
             android:name=".IdeasActivity"
             android:label="@string/title_activity_ideas" >
         </activity>
+        <activity
+            android:name=".TestActivity"
+            android:label="@string/title_activity_test" >
+        </activity>
     </application>
 
 </manifest>

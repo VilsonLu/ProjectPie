@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+                registerUser();
             }
         });
 
@@ -50,7 +50,6 @@ public class RegisterActivity extends AppCompatActivity {
         //ENABLE BACK BUTTON - 01
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                registerUser();
     }
 
     @Override
@@ -91,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void done(ParseException e) {
                     if(e == null) {
                         progressBar.setVisibility(View.INVISIBLE);
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent i = new Intent(getApplicationContext(), TestActivity.class);
                         startActivity(i);
                     } else {
                         // alert something went wrong
