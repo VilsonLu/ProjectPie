@@ -30,6 +30,7 @@
             android:name="com.example.vilso.projectpie.FragmentDrawer"
             />
 
+
     </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

@@ -4,6 +4,7 @@ package models;
  * Created by vilso on 08/08/2015.
  */
 public class IdeaItem {
+    private String objectId;
     private String title;
     private float ratings;
     private int likes;
@@ -16,6 +17,14 @@ public class IdeaItem {
         this.ratings = ratings;
         this.likes = likes;
         this.youtubeLink = youtubeLink;
+    }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
     }
 
     public String getTitle() {

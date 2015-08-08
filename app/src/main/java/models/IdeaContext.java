@@ -2,6 +2,7 @@ package models;
 
 import android.support.annotation.NonNull;
 
+import com.parse.CountCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -60,6 +61,7 @@ public class IdeaContext {
                 ParseObject like = new ParseObject("Like");
                 like.put("user", user);
                 like.put("idea", idea);
+                like.saveInBackground();
             } else {
                 lists.get(0).deleteInBackground();
             }
@@ -116,19 +118,17 @@ public class IdeaContext {
         return freshIdeas;
     }
 
-    public ParseObject getIdea(String objectID){
+    public ParseObject getIdea(String objectID) {
         ParseQuery<ParseObject> idea = ParseQuery.getQuery("Idea");
-        idea.whereEqualTo("objectId", objectID);
-        idea.setLimit(1);
 
-        ParseObject ideaObject = null;
+        ParseObject item = null;
         try {
-            ideaObject = idea.find().get(0);
+            item = idea.get(objectID);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return ideaObject;
+        return item;
     }
 
     public List<ParseObject> createRating(List<Rate> ratings) {
@@ -168,9 +168,12 @@ public class IdeaContext {
         ParseQuery<ParseObject> likeQuery = ParseQuery.getQuery("Like");
         likeQuery.whereEqualTo("idea", idea);
 
+
+
         int numLikes = 0;
         try {
             numLikes = likeQuery.count();
+
         } catch (ParseException e) {
             e.printStackTrace();
         }

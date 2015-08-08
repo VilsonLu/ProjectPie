@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/video"
-                android:text="Like: 900"
+                android:text="Like: 9003"
                 android:layout_alignParentRight="true"/>
 
         </RelativeLayout>

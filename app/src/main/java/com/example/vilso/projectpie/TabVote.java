@@ -55,8 +55,11 @@ public class TabVote extends Fragment implements IdeaItemAdapter.IdeaItemHolder.
         List<IdeaItem> data = new ArrayList();
 
         for(ParseObject item: ideaObject){
-            data.add(new IdeaItem(item.getString("title"), 0.3f, context.getLikeCount(item), item.getString("youtube"), item.getString("status")));
+            IdeaItem itemObject = new IdeaItem(item.getString("title"), 0.3f, context.getLikeCount(item), item.getString("youtube"), item.getString("status"));
+            itemObject.setObjectId(item.getObjectId());
+            data.add(itemObject);
         }
+
         return data;
 
     }
@@ -64,6 +67,8 @@ public class TabVote extends Fragment implements IdeaItemAdapter.IdeaItemHolder.
     @Override
     public void itemClicked(View view, int position) {
         Intent intent = new Intent(getActivity(), ViewIdeaActivity.class);
+
+        intent.putExtra("ideaID", getData().get(position).getObjectId().toString());
         startActivity(intent);
     }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,14 +58,21 @@ public class TabHot extends Fragment implements IdeaItemAdapter.IdeaItemHolder.C
         List<IdeaItem> data = new ArrayList();
 
         for(ParseObject item: ideaObject){
-            data.add(new IdeaItem(item.getString("title"), 0.3f, context.getLikeCount(item), item.getString("youtube"), item.getString("status")));
+            IdeaItem itemObject = new IdeaItem(item.getString("title"), 0.3f, context.getLikeCount(item), item.getString("youtube"), item.getString("status"));
+            itemObject.setObjectId(item.getObjectId());
+            data.add(itemObject);
         }
         return data;
     }
 
     @Override
-    public void itemClicked(View view, int position) {
+    public void itemClicked(View view, int position){
+
         Intent intent = new Intent(getActivity(), ViewIdeaActivity.class);
+        if(getData().get(position) != null) {
+            Log.e("Message Error", getData().get(position).getObjectId());
+        }
+        intent.putExtra("ideaID", getData().get(position).getObjectId().toString());
         startActivity(intent);
     }
 
