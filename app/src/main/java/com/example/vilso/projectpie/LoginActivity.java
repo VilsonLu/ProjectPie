@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.LinearGradient;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
+    private Toolbar toolbar;
 
     private EditText txtUsername;
     private EditText txtPassword;
@@ -59,6 +61,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
+        //ENABLE BACK BUTTON - 01
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
