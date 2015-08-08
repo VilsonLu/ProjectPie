@@ -1,5 +1,6 @@
 package com.example.vilso.projectpie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -62,8 +63,8 @@ public class TabVote extends Fragment implements IdeaItemAdapter.IdeaItemHolder.
 
     @Override
     public void itemClicked(View view, int position) {
-//        Intent intent = new Intent();
-//        startActivity(intent);
+        Intent intent = new Intent(getActivity(), ViewIdeaActivity.class);
+        startActivity(intent);
     }
 
 }

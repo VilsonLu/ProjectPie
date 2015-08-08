@@ -36,6 +36,14 @@
             android:name=".TestActivity"
             android:label="@string/title_activity_test" >
         </activity>
+        <activity
+            android:name=".ViewIdeaActivity"
+            android:label="@string/title_activity_view_idea" >
+        </activity>
+        <activity
+            android:name=".ViewMyIdeaActivity"
+            android:label="@string/title_activity_view_my_idea" >
+        </activity>
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ParseUser user = ParseUser.getCurrentUser();
         if(user != null) {
-            Intent i = new Intent(getApplicationContext(), TestActivity.class);
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(i);
         }
 

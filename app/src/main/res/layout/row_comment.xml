@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:minHeight="72dp"
+    android:background="@android:color/white"
+    android:paddingBottom="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:background="#bebebe"/>
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VilsonLuffy"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_toRightOf="@id/profile_image"
+        android:layout_alignTop="@id/profile_image"
+        android:layout_marginLeft="8dp"
+        />
+
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_username"
+        android:layout_alignLeft="@id/tv_username"
+        style="?android:attr/ratingBarStyleSmall"/>
+
+    <TextView
+        android:id="@+id/tv_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loren Ipsum dolor sit amen ni molen jit. Sniff sniff moolah ni akut ban. Cho tsuao zok."
+        android:layout_alignLeft="@id/tv_username"
+        android:layout_below="@id/rating"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"/>
+
+</RelativeLayout>
