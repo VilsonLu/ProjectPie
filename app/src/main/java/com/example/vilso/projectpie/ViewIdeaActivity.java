@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.example.vilso.projectpie.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
     private Toolbar toolbar;
     private RelativeLayout layout_question;
     private TextView tv_question;
+    private FloatingActionButton btn_fab;
     private Button btn_yes;
     private Button btn_no;
     private String[] questions = new String[]{"Was it a real problem?",
@@ -59,9 +61,11 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         btn_yes = (Button)findViewById(R.id.btn_yes);
         btn_no = (Button)findViewById(R.id.btn_no);
+        btn_fab = (FloatingActionButton)findViewById(R.id.btn_fab);
 
         btn_yes.setOnClickListener(this);
         btn_no.setOnClickListener(this);
+        btn_fab.setOnClickListener(this);
     }
 
     @Override
