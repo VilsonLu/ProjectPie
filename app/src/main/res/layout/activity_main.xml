@@ -6,12 +6,18 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
 
-    <TextView android:text="@string/hello_world" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"/>
-
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    <com.example.jeh.materialdesign.OJT_SlidingTabLayout.SlidingTabLayout
+        android:id="@+id/sliding_tab"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lblUser" />
+        android:elevation="2dp"
+    android:background="@color/primaryColor"/>  <!--Setting the Sliding Scroll color is in code -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        ></android.support.v4.view.ViewPager>
 
 </RelativeLayout>
