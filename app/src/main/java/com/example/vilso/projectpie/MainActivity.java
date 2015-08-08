@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
+    private TextView lblUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         //ENABLE BACK BUTTON - 01
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ParseUser user = ParseUser.getCurrentUser();
+        lblUser = (TextView) findViewById(R.id.lblUser);
+        lblUser.setText("Hello, " + user.getUsername());
     }
 
     @Override

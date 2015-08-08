@@ -42,8 +42,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:id="@+id/button"
+        android:id="@+id/btnRegister"
         android:layout_below="@+id/txtConfirmPassword"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/txtConfirmPassword" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/registerProgress"
+        android:layout_below="@+id/btnRegister"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

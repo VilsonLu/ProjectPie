@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#FFC107</color>
-    <color name="primaryColorLight">#FFECB3</color>
-    <color name="primaryColorDark">#FFA000</color>
-    <color name="accentColor">#FFAB40</color>
-    <color name="accentColorLight">#FFD180</color>
-    <color name="accentColorDark">#FF9100</color>
+    <color name="primaryColor">#FF9800</color>
+    <color name="primaryColorLight">#FFE0B2</color>
+    <color name="primaryColorDark">#F57C00</color>
+    <color name="accentColor">#FFFF00</color>
+    <color name="accentColorLight">#FFFF8D</color>
+    <color name="accentColorDark">#FFEA00</color>
     <color name="rippleColor">?android:colorControlHighlight</color>
     <color name="tabsScrollColor">#fff</color>
 

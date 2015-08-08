@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -21,6 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText txtPassword;
     private EditText txtConfirmPassword;
     private Button btnRegister;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,10 @@ public class RegisterActivity extends AppCompatActivity {
         txtConfirmPassword = (EditText) findViewById(R.id.txtConfirmPassword);
 
         btnRegister = (Button) findViewById(R.id.btnRegister);
-        btnRegister.setOnClickListener(new View.OnClickListener() {
+        progressBar = (ProgressBar) findViewById(R.id.registerProgress);
+
+        progressBar.setVisibility(View.INVISIBLE);
+        btnRegister.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
@@ -45,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         //ENABLE BACK BUTTON - 01
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                registerUser();
     }
 
     @Override
@@ -74,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
         String username = txtUsername.getText().toString();
         String password = txtPassword.getText().toString();
         String confirmPassword = txtConfirmPassword.getText().toString();
-
+        progressBar.setVisibility(View.VISIBLE);
         // validation
         if(password.equals(confirmPassword)) {
             ParseUser user = new ParseUser();
@@ -84,10 +90,13 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void done(ParseException e) {
                     if(e == null) {
+                        progressBar.setVisibility(View.INVISIBLE);
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                     } else {
                         // alert something went wrong
+                        // highlight txtPassword and txtConfirmPassword
+
                     }
                 }
             });
