@@ -57,7 +57,6 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         layout_question = (RelativeLayout)findViewById(R.id.layout_question);
-        tv_question = (TextView)findViewById(R.id.tv_question);
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -76,6 +75,8 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        
+        tv_question = (TextView)sliderView.findViewById(R.id.tv_question);
 
         btn_yes = (Button)sliderView.findViewById(R.id.btn_yes);
         btn_no = (Button)sliderView.findViewById(R.id.btn_no);
