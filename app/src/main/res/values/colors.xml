@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#FFC107</color>
+    <color name="primaryColorLight">#FFECB3</color>
+    <color name="primaryColorDark">#FFA000</color>
+    <color name="accentColor">#FFAB40</color>
+    <color name="accentColorLight">#FFD180</color>
+    <color name="accentColorDark">#FF9100</color>
+    <color name="rippleColor">?android:colorControlHighlight</color>
+    <color name="tabsScrollColor">#fff</color>
+
+    <color name="menu_item_title">@color/text_secondary</color>
+    <color name="menu_item_title_selected">@color/primaryColor</color>
+
+    <color name="divider">#26000000</color>
+    <color name="text_disabled">#42000000</color>
+    <color name="text_hint">#42000000</color>
+    <color name="text_primary">#DD000000</color>
+    <color name="text_secondary">#89000000</color>
+    <color name="statusbar_light">#E0E0E0</color>
+    <color name="appbar_light">#F5F5F5</color>
+    <color name="background_light">#FAFAFA</color>
+    <color name="cards_light">#FFFFFF</color>
+    <color name="icons_active">#89000000</color>
+    <color name="icons_inactive">#42000000</color>
+
+    <color name="divider_light">#26FFFFFF</color>
+    <color name="text_disabled_light">#4CFFFFFF</color>
+    <color name="text_hint_light">#4CFFFFFF</color>
+    <color name="text_primary_light">#FFFFFF</color>
+    <color name="text_secondary_light">#B2FFFFFF</color>
+    <color name="statusbar_dark">#000000</color>
+    <color name="appbar_dark">#212121</color>
+    <color name="background_dark">#303030</color>
+    <color name="cards_dark">#424242</color>
+    <color name="icons_active_light">#FFFFFF</color>
+    <color name="icons_inactive_light">#4CFFFFFF</color>
+</resources>
