@@ -1,25 +1,36 @@
 package com.example.vilso.projectpie;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+import android.view.LayoutInflater;
+>>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+<<<<<<< HEAD
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+=======
+import com.example.vilso.projectpie.floatingactionbutton.FloatingActionButton;
+>>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +45,14 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
     private CommentAdapter itemAdapter;
     private Toolbar toolbar;
     private RelativeLayout layout_question;
+    private LayoutInflater layoutInflater;
     private TextView tv_question;
+<<<<<<< HEAD
     private TextView tv_title;
+=======
+    private View sliderView;
+    private FloatingActionButton btn_fab;
+>>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
     private Button btn_yes;
     private Button btn_no;
     private Button btnLike;
@@ -68,6 +85,7 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         layout_question = (RelativeLayout)findViewById(R.id.layout_question);
+<<<<<<< HEAD
         tv_question = (TextView)findViewById(R.id.tv_question);
         tv_title = (TextView) findViewById(R.id.tv_title);
         tv_title.setText(ideaItem.getTitle());
@@ -83,34 +101,93 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
             }
         });
         itemAdapter = new CommentAdapter(this, getData());
+=======
+
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+
+        layoutInflater = LayoutInflater.from(this);
+        sliderView = layoutInflater.inflate(R.layout.view_app_idea_header, recyclerView, false);
+
+        itemAdapter = new CommentAdapter(getData());
+
+        itemAdapter.setContext(this);
+>>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
         itemAdapter.setClickListener(this);
+        itemAdapter.setParallaxHeader(sliderView, recyclerView);
+//        itemAdapter.setData(getData());
+        itemAdapter.implementMethods();
 
         recyclerView.setAdapter(itemAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        btn_yes = (Button)findViewById(R.id.btn_yes);
-        btn_no = (Button)findViewById(R.id.btn_no);
+        tv_question = (TextView)sliderView.findViewById(R.id.tv_question);
+
+        btn_yes = (Button)sliderView.findViewById(R.id.btn_yes);
+        btn_no = (Button)sliderView.findViewById(R.id.btn_no);
+        btn_fab = (FloatingActionButton)findViewById(R.id.btn_fab);
 
         btn_yes.setOnClickListener(this);
         btn_no.setOnClickListener(this);
+<<<<<<< HEAD
 
 
+=======
+        btn_fab.setOnClickListener(this);
+>>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
     }
 
     @Override
     public void onClick(View v) {
-        YoYo.with(Techniques.FadeOutLeft).duration(500).playOn(tv_question);
-        YoYo.YoYoString x= YoYo.with(Techniques.FadeInRight).delay(500).playOn(tv_question);
+        YoYo.YoYoString x = YoYo.with(Techniques.FadeOutLeft).duration(500).playOn(tv_question);
+        YoYo.with(Techniques.FadeInRight).delay(500).playOn(tv_question);
 
-        while(!x.isStarted()){};
-
-        tv_question.setText("Boom");
+        while(x.isRunning()){};
+            tv_question.setText("Boom");
 
         if(v.equals(btn_yes)){
 
         }else if(v.equals(btn_no)){
 
+        }else if(v.equals(btn_fab)){
+            popup();
         }
+    }
+
+    private void popup(){
+        // get prompts.xml view
+        LayoutInflater li = LayoutInflater.from(this);
+        View promptsView = li.inflate(R.layout.dialog, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.et_comment);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Post",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+
     }
 
     @Override

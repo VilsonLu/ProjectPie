@@ -44,6 +44,14 @@
             android:name=".ViewMyIdeaActivity"
             android:label="@string/title_activity_view_my_idea" >
         </activity>
+        <activity
+            android:name=".AddPitchActivity"
+            android:label="@string/title_activity_add_pitch" >
+        </activity>
+        <activity
+            android:name=".floatingactionbutton.ActivityMyIdeaDetails"
+            android:label="@string/title_activity_activity_my_idea_details" >
+        </activity>
     </application>
 
 </manifest>

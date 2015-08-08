@@ -16,4 +16,6 @@
     <string name="drawer_close">Close</string>
     <string name="title_activity_view_idea">ViewIdeaActivity</string>
     <string name="title_activity_view_my_idea">ViewMyIdeaActivity</string>
+    <string name="title_activity_add_pitch">AddPitchActivity</string>
+    <string name="title_activity_activity_my_idea_details">ActivityMyIdeaDetails</string>
 </resources>

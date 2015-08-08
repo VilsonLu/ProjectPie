@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.poliveira.parallaxrecycleradapter.ParallaxRecyclerAdapter;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -19,42 +21,52 @@ import models.RateAndComment;
 /**
  * Created by Jeh on 08/08/2015.
  */
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentViewHolder>{
+public class CommentAdapter extends ParallaxRecyclerAdapter<RateAndComment> {
     private Context context;
     private CommentViewHolder.ClickListener clickListener;
     private LayoutInflater inflater;
     private List<RateAndComment> data = Collections.emptyList();
 
-    public CommentAdapter(Context context, List<RateAndComment> data){
-        this.context = context;
+    public CommentAdapter(List<RateAndComment> data){
+        super(data);
         this.data = data;
+    }
+
+    public void setContext(Context context){
+        this.context = context;
         inflater = LayoutInflater.from(context);
+    }
+
+    public void implementMethods(){
+        implementRecyclerAdapterMethods(new RecyclerAdapterMethods() {
+            @Override
+            public void onBindViewHolder(RecyclerView.ViewHolder holder1, int position) {
+                CommentViewHolder holder = (CommentViewHolder)holder1;
+
+                RateAndComment current = data.get(position);
+                //set the attributes to the Views
+//        holder.iv_img.setImageResource(current.get());
+                holder.tv_username.setText(current.getUsername());
+                holder.tv_comment.setText(current.getComment());
+                holder.tv_rating.setRating(current.getRating());
+            }
+
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+                View view = inflater.inflate(R.layout.row_comment, viewGroup, false);
+                CommentViewHolder holder = new CommentViewHolder(context, clickListener, view);
+                return holder;
+            }
+
+            @Override
+            public int getItemCount() {
+                return data.size();
+            }
+        });
     }
 
     public void setClickListener(CommentViewHolder.ClickListener clickListener){
         this.clickListener = clickListener;
-    }
-
-    @Override
-    public CommentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.row_comment, parent, false);
-        CommentViewHolder holder = new CommentViewHolder(context, clickListener, view);
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(CommentViewHolder holder, int position) {
-        RateAndComment current = data.get(position);
-        //set the attributes to the Views
-//        holder.iv_img.setImageResource(current.get());
-        holder.tv_username.setText(current.getUsername());
-        holder.tv_comment.setText(current.getComment());
-        holder.tv_rating.setRating(current.getRating());
-    }
-
-    @Override
-    public int getItemCount() {
-        return data.size();
     }
 
     static class CommentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -3,9 +3,9 @@
     <color name="primaryColor">#FF9800</color>
     <color name="primaryColorLight">#FFE0B2</color>
     <color name="primaryColorDark">#F57C00</color>
-    <color name="accentColor">#FFFF00</color>
-    <color name="accentColorLight">#FFFF8D</color>
-    <color name="accentColorDark">#FFEA00</color>
+    <color name="accentColor">#EEFF41</color>
+    <color name="accentColorLight">#F4FF81</color>
+    <color name="accentColorDark">#C6FF00</color>
     <color name="rippleColor">?android:colorControlHighlight</color>
     <color name="tabsScrollColor">#fff</color>
 
