@@ -8,5 +8,11 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_ideas">IdeasActivity</string>
+<<<<<<< HEAD
     <string name="title_activity_test">TestActivity</string>
+=======
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+>>>>>>> 9d71517f1c472efd3198fa094c4b5f18d68ba338
 </resources>

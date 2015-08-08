@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-
     private CharSequence Titles[];
     private int NumbOfTabs;
 
@@ -23,10 +22,13 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             TabHot tab1 = new TabHot();
             return tab1;
         }
-        else
+        else if(position == 1)
         {
             TabTrending tab2 = new TabTrending();
             return tab2;
+        }else{
+            TabVote tab3 = new TabVote();
+            return tab3;
         }
     }
 

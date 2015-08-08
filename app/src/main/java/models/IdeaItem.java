@@ -9,6 +9,7 @@ public class IdeaItem {
     private int likes;
     private String youtubeLink;
     private String status;
+    //TODO: Add private int views
 
     public IdeaItem(String title, float ratings, int likes, String youtubeLink, String status){
         this.title = title;

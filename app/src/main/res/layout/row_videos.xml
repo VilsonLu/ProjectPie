@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    card_view:cardCornerRadius="4dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginTop="8dp"
+    android:clickable="true"
+    android:foreground="@drawable/ripple_white_bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="170dp"
+                android:layout_height="match_parent"
+                android:background="#bebebe"/>
+
+            <TextView
+                android:id="@+id/tv_appname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="App Name"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_toRightOf="@id/iv_image"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"/>
+
+            <TextView
+                android:id="@+id/tv_views"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_appname"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/tv_appname"
+                style="@style/Base.TextAppearance.AppCompat.Caption"
+                android:textColor="@color/text_secondary"
+                android:text="Views: 8000"/>
+
+            <TextView
+                android:id="@+id/tv_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_appname"
+                android:layout_below="@id/tv_views"
+                style="@style/Base.TextAppearance.AppCompat.Caption"
+                android:textColor="@color/text_secondary"
+                android:text="Likes: 30"/>
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:text="In Development"
+                android:layout_toRightOf="@id/iv_image"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="4dp"
+                android:padding="4dp"
+                android:gravity="center_horizontal"
+                style="@style/Base.TextAppearance.AppCompat.Caption"
+                android:textColor="@android:color/white"
+                android:background="@drawable/progress_rounded_inprogress"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>

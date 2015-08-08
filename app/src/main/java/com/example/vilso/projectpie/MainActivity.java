@@ -1,7 +1,12 @@
 package com.example.vilso.projectpie;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +16,7 @@ import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
+    private FragmentDrawer drawerFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +26,18 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        //ENABLE BACK BUTTON - 01
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        drawerFragment = (FragmentDrawer) getSupportFragmentManager().findFragmentById(R.id.frag_nav);
+
+        drawerFragment.setUp(R.id.frag_nav, (DrawerLayout) findViewById(R.id.drawerLayout), toolbar);
+
+        FragmentFeeds fv = new FragmentFeeds();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.fragment_container, fv);
+        ft.commit();
     }
 
     @Override
