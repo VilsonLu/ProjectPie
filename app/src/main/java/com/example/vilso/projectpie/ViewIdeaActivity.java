@@ -8,11 +8,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-<<<<<<< HEAD
 import android.util.Log;
-=======
 import android.view.LayoutInflater;
->>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,13 +21,10 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
-<<<<<<< HEAD
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-=======
 import com.example.vilso.projectpie.floatingactionbutton.FloatingActionButton;
->>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +41,9 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
     private RelativeLayout layout_question;
     private LayoutInflater layoutInflater;
     private TextView tv_question;
-<<<<<<< HEAD
     private TextView tv_title;
-=======
     private View sliderView;
     private FloatingActionButton btn_fab;
->>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
     private Button btn_yes;
     private Button btn_no;
     private Button btnLike;
@@ -85,23 +76,9 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         layout_question = (RelativeLayout)findViewById(R.id.layout_question);
-<<<<<<< HEAD
-        tv_question = (TextView)findViewById(R.id.tv_question);
-        tv_title = (TextView) findViewById(R.id.tv_title);
-        tv_title.setText(ideaItem.getTitle());
 
-        btnLike = (Button) findViewById(R.id.btn_like);
-        btnLike.setText("Like: "+ Integer.toString(ideaContext.getLikeCount(ideaParse)));
-        btnLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IdeaContext ideaContext = new IdeaContext();
-                ideaContext.likeIdea(ideaParse, ParseUser.getCurrentUser());
-                btnLike.setText("Like: " + Integer.toString(ideaContext.getLikeCount(ideaParse)));
-            }
-        });
-        itemAdapter = new CommentAdapter(this, getData());
-=======
+
+        itemAdapter = new CommentAdapter(getData());
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -113,7 +90,6 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         itemAdapter = new CommentAdapter(getData());
 
         itemAdapter.setContext(this);
->>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
         itemAdapter.setClickListener(this);
         itemAdapter.setParallaxHeader(sliderView, recyclerView);
 //        itemAdapter.setData(getData());
@@ -123,6 +99,19 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         tv_question = (TextView)sliderView.findViewById(R.id.tv_question);
+        tv_title = (TextView) sliderView.findViewById(R.id.tv_title);
+        tv_title.setText(ideaItem.getTitle());
+
+        btnLike = (Button) sliderView.findViewById(R.id.btn_like);
+        btnLike.setText("Like: "+ Integer.toString(ideaContext.getLikeCount(ideaParse)));
+        btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IdeaContext ideaContext = new IdeaContext();
+                ideaContext.likeIdea(ideaParse, ParseUser.getCurrentUser());
+                btnLike.setText("Like: " + Integer.toString(ideaContext.getLikeCount(ideaParse)));
+            }
+        });
 
         btn_yes = (Button)sliderView.findViewById(R.id.btn_yes);
         btn_no = (Button)sliderView.findViewById(R.id.btn_no);
@@ -130,12 +119,7 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         btn_yes.setOnClickListener(this);
         btn_no.setOnClickListener(this);
-<<<<<<< HEAD
-
-
-=======
         btn_fab.setOnClickListener(this);
->>>>>>> 0bdd175cb8ed776e66b349147e5821412ef41686
     }
 
     @Override
