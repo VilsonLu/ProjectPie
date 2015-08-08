@@ -44,4 +44,12 @@
         android:layout_below="@+id/btnLogin"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/btnLogin" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_below="@+id/btnRegister"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
