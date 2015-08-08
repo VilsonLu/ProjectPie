@@ -5,5 +5,5 @@
     android:layout_height="?actionBarSize"
     app:theme="@style/CustomBarTheme"
     android:popupTheme="@style/CustomBarTheme"
-    android:elevation="4dp">
+    android:elevation="2dp">
 </android.support.v7.widget.Toolbar>
