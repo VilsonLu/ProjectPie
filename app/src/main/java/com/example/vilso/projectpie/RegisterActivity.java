@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -19,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private EditText txtUsername;
+    private EditText txtEmail;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
     private Button btnRegister;
@@ -30,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         txtUsername = (EditText) findViewById(R.id.txtUsername);
+        txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
         txtConfirmPassword = (EditText) findViewById(R.id.txtConfirmPassword);
 
@@ -77,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void registerUser() {
 
         String username = txtUsername.getText().toString();
+        String email = txtEmail.getText().toString();
         String password = txtPassword.getText().toString();
         String confirmPassword = txtConfirmPassword.getText().toString();
         progressBar.setVisibility(View.VISIBLE);
@@ -84,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
         if(password.equals(confirmPassword)) {
             ParseUser user = new ParseUser();
             user.setUsername(username);
+            user.setEmail(email);
             user.setPassword(password);
             user.signUpInBackground(new SignUpCallback() {
                 @Override
@@ -95,12 +101,16 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         // alert something went wrong
                         // highlight txtPassword and txtConfirmPassword
+                        Toast.makeText(getApplicationContext(), "Something went wrong. :(", Toast.LENGTH_SHORT).show();
+
+
 
                     }
                 }
             });
         } else { // passwords do not match
             //highlight password and confirm password
+            Toast.makeText(getApplicationContext(), "The passwords do not match.", Toast.LENGTH_SHORT).show();
         }
 
     }

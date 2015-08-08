@@ -9,9 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import models.IdeaContext;
 import models.IdeaItem;
 
 
@@ -46,11 +49,15 @@ public class TabTrending extends Fragment implements IdeaItemAdapter.IdeaItemHol
     }
 
     public static List<IdeaItem> getData(){
+        IdeaContext context = new IdeaContext();
+        List<ParseObject> ideaObject = context.getListOfIdeas();
+
         List<IdeaItem> data = new ArrayList();
 
-        for(int i = 0; i < 20; i++){
-            data.add(new IdeaItem("App name", 0.3f, 300, "", "In Development"));
+        for(ParseObject item: ideaObject){
+            data.add(new IdeaItem(item.getString("title"), 0.3f, context.getLikeCount(item), item.getString("youtube"), item.getString("status")));
         }
+
         return data;
     }
 
