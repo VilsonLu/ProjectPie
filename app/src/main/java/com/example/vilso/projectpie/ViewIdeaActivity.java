@@ -22,6 +22,9 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -62,6 +65,11 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
     private final static int DISAPPEAR_DELAY = 1000;
     private final static int APPEAR_DELAY = 1000;
+    private YouTubePlayer youTubePlayer;
+    private YouTubePlayerFragment youTubePlayerFragment;
+    private String apiKey = "AIzaSyCXeEQkrS5bcfo7UgArOeSs2BjS3lZvNzE";
+
+    private String VIDEO_ID = "tWSOgtVJOnM";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +165,25 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         for(int i = 1; i < recyclerView.getChildCount(); i++){
             YoYo.with(Techniques.FadeInUp).duration(1000).playOn(recyclerView.getChildAt(i));
         }
+
+        youTubePlayerFragment = (YouTubePlayerFragment)getFragmentManager().findFragmentById(R.id.video);
+        youTubePlayerFragment.initialize(apiKey, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean b) {
+                youTubePlayer = player;
+                if (!b) {
+                    player.cueVideo(VIDEO_ID);
+                }
+
+
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
+
+
+            }
+        });
     }
 
     @Override

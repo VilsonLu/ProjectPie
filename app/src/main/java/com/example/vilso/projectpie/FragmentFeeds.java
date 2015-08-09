@@ -67,6 +67,7 @@ public class FragmentFeeds extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v.equals(btn_fab)){
+
             Intent intent = new Intent(getActivity(), AddPitchActivity.class);
             startActivity(intent);
         }
