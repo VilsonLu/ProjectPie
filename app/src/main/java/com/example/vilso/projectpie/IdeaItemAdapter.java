@@ -1,7 +1,11 @@
 package com.example.vilso.projectpie;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -41,13 +46,51 @@ public class IdeaItemAdapter  extends RecyclerView.Adapter<IdeaItemAdapter.IdeaI
         IdeaItem current = data.get(position);
 
         //TODO: get youtube thumbnail
-//        holder.iv_img.setImageResource(current.getYoutubeLink());
+        if(current.getYoutubeLink() != null) {
+            new DownloadImageTask(holder.iv_img)
+                    .execute("http://img.youtube.com/vi/" + current.getYoutubeLink().split("=")[1] + "/0.jpg");
+
+        } else {
+            holder.iv_img.setBackgroundColor(context.getResources().getColor(R.color.secondary_text_default_material_light));
+        }
         holder.tv_appname.setText(current.getTitle());
         holder.tv_views.setText("Views: " + current.getLikes());    //TODO: change to views
         holder.tv_likes.setText("Likes " + current.getLikes());
         holder.tv_status.setText(current.getStatus());
+
+        if(current.getStatus().equalsIgnoreCase("new")){
+            holder.tv_status.setBackgroundResource(R.drawable.progress_rounded_new);
+        } else if(current.getStatus().equalsIgnoreCase("in progress")){
+            holder.tv_status.setBackgroundResource(R.drawable.progress_rounded_inprogress);
+        } else if(current.getStatus().equalsIgnoreCase("discontinued")) {
+            holder.tv_status.setBackgroundResource(R.drawable.progress_rounded_discontinued);
+        }
     }
 
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
     @Override
     public int getItemCount() {
         return data.size();

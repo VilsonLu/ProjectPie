@@ -65,7 +65,7 @@ public class TabTrending extends Fragment implements IdeaItemAdapter.IdeaItemHol
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
+
         List<IdeaItem> data = new ArrayList();
 
         for(ParseObject item: ideaObject){

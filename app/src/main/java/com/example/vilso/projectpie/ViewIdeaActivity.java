@@ -69,7 +69,7 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
     private YouTubePlayerFragment youTubePlayerFragment;
     private String apiKey = "AIzaSyCXeEQkrS5bcfo7UgArOeSs2BjS3lZvNzE";
 
-    private String VIDEO_ID = "tWSOgtVJOnM";
+    private String VIDEO_ID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,8 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         ideaItem = new IdeaItem(ideaParse.getString("title"), 0, ideaContext.getLikeCount(ideaParse), ideaParse.getString("youtube"), ideaParse.getString("status"));
         ideaItem.setObjectId(ideaParse.getObjectId());
 
+        VIDEO_ID = ideaItem.getYoutubeLink().split("=")[1];
+        Log.e("Message youtube", VIDEO_ID);
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
@@ -142,6 +144,24 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         btn_no.setOnClickListener(this);
         btn_fab.setOnClickListener(this);
         btn_addcomment.setOnClickListener(this);
+
+        youTubePlayerFragment = (YouTubePlayerFragment)getFragmentManager().findFragmentById(R.id.video);
+        youTubePlayerFragment.initialize(apiKey, new YouTubePlayer.OnInitializedListener() {
+
+
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean b) {
+                youTubePlayer = player;
+                if (!b) {
+                    player.cueVideo(VIDEO_ID);
+                }
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+
+            }
+        });
     }
 
     private String getQuestion(){
@@ -166,24 +186,6 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
             YoYo.with(Techniques.FadeInUp).duration(1000).playOn(recyclerView.getChildAt(i));
         }
 
-        youTubePlayerFragment = (YouTubePlayerFragment)getFragmentManager().findFragmentById(R.id.video);
-        youTubePlayerFragment.initialize(apiKey, new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean b) {
-                youTubePlayer = player;
-                if (!b) {
-                    player.cueVideo(VIDEO_ID);
-                }
-
-
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
-
-
-            }
-        });
     }
 
     @Override

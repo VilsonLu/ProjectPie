@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +55,20 @@ public class TabHot extends Fragment implements IdeaItemAdapter.IdeaItemHolder.C
     public static List<IdeaItem> getData(){
 
         IdeaContext context = new IdeaContext();
-        List<ParseObject> ideaObject = context.getListOfIdeas();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Idea");
+        query.setLimit(10);
+
+        List<ParseObject> ideaObject = null;
+
+        try {
+            ideaObject = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         List<IdeaItem> data = new ArrayList();
-
         for(ParseObject item: ideaObject){
+            Log.e("Message status", item.getString("status"));
             IdeaItem itemObject = new IdeaItem(item.getString("title"), 0.3f, context.getLikeCount(item), item.getString("youtube"), item.getString("status"));
             itemObject.setObjectId(item.getObjectId());
             data.add(itemObject);

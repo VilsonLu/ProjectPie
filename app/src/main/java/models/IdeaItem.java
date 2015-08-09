@@ -17,6 +17,7 @@ public class IdeaItem {
         this.ratings = ratings;
         this.likes = likes;
         this.youtubeLink = youtubeLink;
+        this.status = status;
     }
 
     public String getObjectId() {
