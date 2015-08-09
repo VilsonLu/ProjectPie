@@ -19,4 +19,5 @@
     <string name="title_activity_add_pitch">Add a Peach</string>
     <string name="title_activity_activity_my_idea_details"></string>
     <string name="title_activity_my_idea_statistics"></string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
 </resources>

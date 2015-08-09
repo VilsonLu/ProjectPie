@@ -16,8 +16,6 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-
     private EditText txtUsername;
     private EditText txtPassword;
     private Button btnLogin;
@@ -60,8 +58,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
     }
 
     @Override

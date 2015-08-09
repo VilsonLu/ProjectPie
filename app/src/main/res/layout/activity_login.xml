@@ -3,17 +3,43 @@
     android:layout_height="match_parent"
     tools:context="com.example.vilso.projectpie.LoginActivity">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primaryColor"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/pg2"
+        android:scaleType="centerCrop"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_pitchpls_type"
+        android:padding="16dp"
+        android:layout_marginTop="36dp"
+        android:scaleType="fitCenter"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txtUsername"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="165dp"
-        android:layout_alignParentEnd="true"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="64dp"
+        android:textColor="@android:color/white"
+        android:padding="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:hint="Username"/>
 
     <EditText
@@ -23,33 +49,56 @@
         android:ems="10"
         android:id="@+id/txtPassword"
         android:layout_below="@+id/txtUsername"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/txtUsername"
-        android:hint="Password"/>
+        android:textColor="@android:color/white"
+        android:layout_alignLeft="@id/txtUsername"
+        android:layout_alignRight="@id/txtUsername"
+        android:padding="8dp"
+        android:hint="Password"
+        android:layout_marginTop="8dp"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
         android:id="@+id/btnLogin"
         android:layout_below="@+id/txtPassword"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/txtPassword" />
+        android:layout_alignLeft="@id/txtUsername"
+        android:layout_alignRight="@id/txtUsername"
+        android:textColor="@android:color/white"
+        android:background="@drawable/ripple_primary_bg"
+        android:layout_marginTop="8dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/btnRegister"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/btnLogin" />
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tv_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account?"
+            android:textColor="@android:color/white"
+            style="@style/TextAppearance.AppCompat.Subhead.Inverse"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="4dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:id="@+id/btnRegister"
+            android:layout_toRightOf="@id/tv_sign"
+            android:textColor="@android:color/white"
+            android:background="@drawable/ripple_blue_bg"
+            />
+    </RelativeLayout>
+
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar1"
-        android:layout_below="@+id/btnRegister"
+        android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -18,11 +18,6 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RegisterActivity"
@@ -55,6 +50,16 @@
         <activity
             android:name=".MyIdeaStatisticsActivity"
             android:label="@string/title_activity_my_idea_statistics" >
+        </activity>
+        <activity
+            android:name=".floatingactionbutton.SplashScreen"
+            android:label="Pitch Pls"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
