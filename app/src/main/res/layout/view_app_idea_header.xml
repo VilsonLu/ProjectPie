@@ -26,13 +26,16 @@
                 style="@style/Base.TextAppearance.AppCompat.Title"
                 android:gravity="center_horizontal"/>
 
-            <ImageView
+            <fragment
                 android:id="@+id/video"
+                android:name="com.google.android.youtube.player.YouTubePlayerFragment"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:background="#bebebe"
                 android:layout_below="@id/tv_title"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                />
+
 
             <TextView
                 android:id="@+id/tv_views"

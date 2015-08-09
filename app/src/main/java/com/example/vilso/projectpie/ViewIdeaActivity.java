@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -54,6 +57,12 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
             "Does the idea have a potential for success?",
             "Was the message impacting and convincing?",
             "Was the information simple enough?"};
+
+    private YouTubePlayer youTubePlayer;
+    private YouTubePlayerFragment youTubePlayerFragment;
+    private String apiKey = "AIzaSyCXeEQkrS5bcfo7UgArOeSs2BjS3lZvNzE";
+
+    private String VIDEO_ID = "tWSOgtVJOnM";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +129,25 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         btn_yes.setOnClickListener(this);
         btn_no.setOnClickListener(this);
         btn_fab.setOnClickListener(this);
+
+        youTubePlayerFragment = (YouTubePlayerFragment)getFragmentManager().findFragmentById(R.id.video);
+        youTubePlayerFragment.initialize(apiKey, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean b) {
+                youTubePlayer = player;
+                if (!b) {
+                    player.cueVideo(VIDEO_ID);
+                }
+
+
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
+
+
+            }
+        });
     }
 
     @Override

@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +53,19 @@ public class TabTrending extends Fragment implements IdeaItemAdapter.IdeaItemHol
 
     public static List<IdeaItem> getData(){
         IdeaContext context = new IdeaContext();
-        List<ParseObject> ideaObject = context.getListOfIdeas();
 
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Idea");
+        query.setLimit(10);
+
+        List<ParseObject> ideaObject = null;
+
+        try {
+            ideaObject = query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
         List<IdeaItem> data = new ArrayList();
 
         for(ParseObject item: ideaObject){

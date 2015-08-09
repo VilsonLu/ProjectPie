@@ -19,5 +19,7 @@ public class Global extends Application {
         testObject.put("foo", "bar");
         testObject.saveInBackground();
 
+
+
     }
 }

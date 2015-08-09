@@ -1,5 +1,6 @@
 package com.example.vilso.projectpie;
 
+import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.parse.CountCallback;
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -22,7 +29,7 @@ import java.util.List;
 
 import bolts.Task;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends YouTubeBaseActivity {
 
 
     private Button btnLike;
@@ -33,7 +40,11 @@ public class TestActivity extends AppCompatActivity {
     private EditText txtLink;
     private Button btnAdd;
     private ParseUser user;
+    private YouTubePlayer youTubePlayer;
+    private YouTubePlayerFragment youTubePlayerFragment;
+    private String apiKey = "AIzaSyCXeEQkrS5bcfo7UgArOeSs2BjS3lZvNzE";
 
+    private String VIDEO_ID = "tWSOgtVJOnM";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +57,7 @@ public class TestActivity extends AppCompatActivity {
         txtTitle = (EditText) findViewById(R.id.txtTitle);
         txtLink = (EditText) findViewById(R.id.txtLink);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(new View.OnClickListener(){
+        btnAdd.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -58,6 +69,28 @@ public class TestActivity extends AppCompatActivity {
 
         user = ParseUser.getCurrentUser();
         lblCount.setText("Count: 0");
+
+        youTubePlayerFragment = (YouTubePlayerFragment)getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
+        youTubePlayerFragment.initialize(apiKey, new YouTubePlayer.OnInitializedListener() {
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean b) {
+              youTubePlayer = player;
+                if (!b) {
+                    player.cueVideo(VIDEO_ID);
+                }
+
+
+            }
+
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
+
+
+            }
+        });
+
+
+
     }
 
     public void addIdea(ParseUser user, String title, String link){
