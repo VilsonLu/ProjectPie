@@ -36,7 +36,7 @@
     <color name="icons_active_light">#FFFFFF</color>
     <color name="icons_inactive_light">#4CFFFFFF</color>
 
-    <color name="answer_correct">#ff95f223</color>
+    <color name="answer_correct">#ff74be1e</color>
     <color name="answer_wrong">#ffff673a</color>
 
     <color name="blue">#ff61c4ff</color>

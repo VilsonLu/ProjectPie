@@ -161,6 +161,11 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
     @Override
     public void onClick(View v) {
+        YoYo.YoYoString x = YoYo.with(Techniques.FadeOutLeft).duration(500).playOn(tv_question);
+        YoYo.with(Techniques.FadeInRight).delay(500).playOn(tv_question);
+
+        while(x.isRunning()){};
+        tv_question.setText("Boom");
 
         if(v.equals(btn_yes)){
             YoYo.with(Techniques.ZoomOut).duration(500).playOn(btn_no);

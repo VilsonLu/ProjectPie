@@ -3,6 +3,7 @@ package models;
 import android.support.annotation.NonNull;
 
 import com.parse.CountCallback;
+import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -37,12 +38,19 @@ public class IdeaContext {
     public List<ParseObject> getListOfIdeas() {
         ParseQuery query = ParseQuery.getQuery("Idea");
         query.setLimit(10);
-        List<ParseObject> ideas = null;
-        try {
-            ideas = query.find();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        final List<ParseObject> ideas = new ArrayList<ParseObject>();
+
+         query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> list, ParseException e) {
+                if(e==null){
+                    for (ParseObject item:list){
+                        ideas.add(item);
+                    }
+                }
+            }
+        });
+
 
         return ideas;
     }
