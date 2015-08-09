@@ -3,19 +3,20 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_register">Register</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_ideas">IdeasActivity</string>
+    <string name="title_activity_ideas">Peach Farm</string>
 
     <string name="title_activity_test">TestActivity</string>
 
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
-    <string name="title_activity_view_idea">ViewIdeaActivity</string>
-    <string name="title_activity_view_my_idea">ViewMyIdeaActivity</string>
-    <string name="title_activity_add_pitch">AddPitchActivity</string>
-    <string name="title_activity_activity_my_idea_details">ActivityMyIdeaDetails</string>
+    <string name="title_activity_view_idea"></string>
+    <string name="title_activity_view_my_idea">My Peaches</string>
+    <string name="title_activity_add_pitch">Add a Peach</string>
+    <string name="title_activity_activity_my_idea_details"></string>
+    <string name="title_activity_my_idea_statistics"></string>
 </resources>

@@ -10,13 +10,11 @@
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/app_bar">
-
     </android.support.v7.widget.RecyclerView>
 
     <com.example.vilso.projectpie.floatingactionbutton.FloatingActionButton
@@ -27,6 +25,9 @@
         fab:fab_colorNormal="@color/accentColor"
         fab:fab_colorPressed="@color/accentColorDark"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        android:elevation="2dp"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

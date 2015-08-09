@@ -3,9 +3,9 @@
     <color name="primaryColor">#FF9800</color>
     <color name="primaryColorLight">#FFE0B2</color>
     <color name="primaryColorDark">#F57C00</color>
-    <color name="accentColor">#EEFF41</color>
-    <color name="accentColorLight">#F4FF81</color>
-    <color name="accentColorDark">#C6FF00</color>
+    <color name="accentColor">#CDDC39</color>
+    <color name="accentColorLight">#F0F4C3</color>
+    <color name="accentColorDark">#AFB42B</color>
     <color name="rippleColor">?android:colorControlHighlight</color>
     <color name="tabsScrollColor">#fff</color>
 
@@ -35,4 +35,10 @@
     <color name="cards_dark">#424242</color>
     <color name="icons_active_light">#FFFFFF</color>
     <color name="icons_inactive_light">#4CFFFFFF</color>
+
+    <color name="answer_correct">#ff95f223</color>
+    <color name="answer_wrong">#ffff673a</color>
+
+    <color name="blue">#ff61c4ff</color>
+    <color name="blue_pressed">#ff4e9ccc</color>
 </resources>

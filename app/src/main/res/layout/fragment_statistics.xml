@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    tools:context="com.example.vilso.projectpie.FragmentStatistics">
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:max="1"
+        android:progress="1"
+        android:progressDrawable="@drawable/progressring"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_percentage1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Display2"
+        android:textColor="@color/text_primary"
+        android:text="78%"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@id/progressBar1"
+        android:layout_alignBottom="@id/progressBar1"
+        android:gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/tv_label1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Innovation"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/progressBar1"/>
+
+    <TextView
+        android:id="@+id/tv_message1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Body2"
+        android:textColor="@color/text_primary"
+        android:text="You need to validate your idea more. Yalot alot alot."
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_label1"
+        android:padding="16dp"/>
+
+</RelativeLayout>

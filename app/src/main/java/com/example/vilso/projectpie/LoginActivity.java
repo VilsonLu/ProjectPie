@@ -1,7 +1,6 @@
 package com.example.vilso.projectpie;
 
 import android.content.Intent;
-import android.graphics.LinearGradient;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -40,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         progressBar.setVisibility(View.INVISIBLE);
 
         btnLogin = (Button) findViewById(R.id.btnLogin);

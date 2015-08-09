@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,19 +42,26 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
     private RelativeLayout layout_question;
     private LayoutInflater layoutInflater;
     private TextView tv_question;
-    private TextView tv_title;
+    private TextView tv_analysis;
     private View sliderView;
     private FloatingActionButton btn_fab;
-    private Button btn_yes;
-    private Button btn_no;
+    private Button btn_addcomment;
+    private ImageButton btn_yes;
+    private ImageButton btn_no;
     private Button btnLike;
     private IdeaItem ideaItem;
     private ParseObject ideaParse;
+    private int indexQuestion = 0;
     private String[] questions = new String[]{"Was it a real problem?",
             "Did the idea solve the problem?",
             "Does the idea have a potential for success?",
             "Was the message impacting and convincing?",
             "Was the information simple enough?"};
+
+    private boolean isDoneSurvey = false;
+
+    private final static int DISAPPEAR_DELAY = 1000;
+    private final static int APPEAR_DELAY = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +81,20 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(ideaItem.getTitle() + "");
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         layout_question = (RelativeLayout)findViewById(R.id.layout_question);
-
 
         itemAdapter = new CommentAdapter(getData());
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
+
+        for(int i = 1; i < recyclerView.getChildCount(); i++){
+            recyclerView.getChildAt(i).setVisibility(View.GONE);
+        }
 
         layoutInflater = LayoutInflater.from(this);
         sliderView = layoutInflater.inflate(R.layout.view_app_idea_header, recyclerView, false);
@@ -99,11 +111,11 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         tv_question = (TextView)sliderView.findViewById(R.id.tv_question);
-        tv_title = (TextView) sliderView.findViewById(R.id.tv_title);
-        tv_title.setText(ideaItem.getTitle());
+        tv_analysis = (TextView)sliderView.findViewById(R.id.tv_analysis);
+        tv_analysis.setText("");
 
         btnLike = (Button) sliderView.findViewById(R.id.btn_like);
-        btnLike.setText("Like: "+ Integer.toString(ideaContext.getLikeCount(ideaParse)));
+        btnLike.setText("Like: " + Integer.toString(ideaContext.getLikeCount(ideaParse)));
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,28 +125,67 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
             }
         });
 
-        btn_yes = (Button)sliderView.findViewById(R.id.btn_yes);
-        btn_no = (Button)sliderView.findViewById(R.id.btn_no);
+        btn_yes = (ImageButton)sliderView.findViewById(R.id.btn_yes);
+        btn_no = (ImageButton)sliderView.findViewById(R.id.btn_no);
+        btn_addcomment = (Button)sliderView.findViewById(R.id.btn_comment);
         btn_fab = (FloatingActionButton)findViewById(R.id.btn_fab);
 
         btn_yes.setOnClickListener(this);
         btn_no.setOnClickListener(this);
         btn_fab.setOnClickListener(this);
+        btn_addcomment.setOnClickListener(this);
+    }
+
+    private String getQuestion(){
+        if(indexQuestion < questions.length){
+            YoYo.with(Techniques.FadeIn).duration(500).delay(APPEAR_DELAY).playOn(tv_question);
+            YoYo.with(Techniques.ZoomIn).duration(500).delay(APPEAR_DELAY).playOn(btn_no);
+            YoYo.with(Techniques.ZoomIn).duration(500).delay(APPEAR_DELAY).playOn(btn_yes);
+
+            return questions[indexQuestion++];
+        }else{
+            isDoneSurvey = true;
+            surveyDone();
+        }
+        return "";
+    }
+
+    private void surveyDone(){
+        YoYo.with(Techniques.FadeInUp).duration(1000).playOn(btn_addcomment);
+        btn_addcomment.setVisibility(View.VISIBLE);
+
+        for(int i = 1; i < recyclerView.getChildCount(); i++){
+            YoYo.with(Techniques.FadeInUp).duration(1000).playOn(recyclerView.getChildAt(i));
+        }
     }
 
     @Override
     public void onClick(View v) {
-        YoYo.YoYoString x = YoYo.with(Techniques.FadeOutLeft).duration(500).playOn(tv_question);
-        YoYo.with(Techniques.FadeInRight).delay(500).playOn(tv_question);
-
-        while(x.isRunning()){};
-            tv_question.setText("Boom");
 
         if(v.equals(btn_yes)){
+            YoYo.with(Techniques.ZoomOut).duration(500).playOn(btn_no);
+
+            tv_analysis.setTextColor(getResources().getColor(R.color.answer_correct));
+            tv_analysis.setText(tv_question.getText());
+
+            YoYo.YoYoString x = YoYo.with(Techniques.FadeOut).duration(500).delay(DISAPPEAR_DELAY).playOn(tv_analysis);
+            YoYo.with(Techniques.FadeOut).duration(1).playOn(tv_question);
+            YoYo.with(Techniques.ZoomOut).duration(500).delay(DISAPPEAR_DELAY).playOn(btn_yes);
+
+            tv_question.setText(getQuestion());
 
         }else if(v.equals(btn_no)){
+            YoYo.with(Techniques.ZoomOut).duration(500).playOn(btn_yes);
 
-        }else if(v.equals(btn_fab)){
+            tv_analysis.setTextColor(getResources().getColor(R.color.answer_wrong));
+            tv_analysis.setText(tv_question.getText());
+
+            YoYo.YoYoString x = YoYo.with(Techniques.FadeOut).duration(500).delay(DISAPPEAR_DELAY).playOn(tv_analysis);
+            YoYo.with(Techniques.FadeOut).duration(1).playOn(tv_question);
+            YoYo.with(Techniques.ZoomOut).duration(500).delay(DISAPPEAR_DELAY).playOn(btn_no);
+
+            tv_question.setText(getQuestion());
+        }else if(v.equals(btn_addcomment)){
             popup();
         }
     }
@@ -189,6 +240,11 @@ public class ViewIdeaActivity extends ActionBarActivity implements CommentAdapte
                 e.printStackTrace();
             }
         }
+
+        for(int i = 0; i < 20; i++){
+            data.add(new RateAndComment("chiko", 3, "Wow! edi"));
+        }
+
         return data;
     }
 

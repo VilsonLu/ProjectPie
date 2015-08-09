@@ -52,6 +52,10 @@
             android:name=".floatingactionbutton.ActivityMyIdeaDetails"
             android:label="@string/title_activity_activity_my_idea_details" >
         </activity>
+        <activity
+            android:name=".MyIdeaStatisticsActivity"
+            android:label="@string/title_activity_my_idea_statistics" >
+        </activity>
     </application>
 
 </manifest>
